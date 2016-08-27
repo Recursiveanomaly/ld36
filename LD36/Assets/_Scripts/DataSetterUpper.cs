@@ -35,8 +35,8 @@ public class DataSetterUpper : MonoBehaviour
         tablet002List.Add(picto009);
         tablet002List.Add(picto010);
 
-        Tablet tablet001 = new Tablet(tablet001List);
-        Tablet tablet002 = new Tablet(tablet002List);
+        Tablet tablet001 = new Tablet(tablet001List, "This is tablet001's document.", "Dr. G. Heston Flethersby", "1500 BC");
+        Tablet tablet002 = new Tablet(tablet002List, "This is tablet002's document.", "Dr. Miriam Schuster-Montecarlo", "2500 BC");
 
         city001List.Add(tablet001);
         city001List.Add(tablet002);
