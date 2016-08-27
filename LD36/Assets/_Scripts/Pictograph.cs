@@ -34,6 +34,11 @@ public class Pictograph : MonoBehaviour
 
     void OnMouseDown()
     {
-        Player.Instance.SetIsKnown(pictographName, !Player.Instance.IsKnown(pictographName));
+        //Player.Instance.SetIsKnown(pictographName, !Player.Instance.IsKnown(pictographName));
+
+        if (!Player.Instance.IsKnown(pictographName))
+        {
+            TabletPanel.Instance.ShowGuessPopup(this);
+        }
     }
 }

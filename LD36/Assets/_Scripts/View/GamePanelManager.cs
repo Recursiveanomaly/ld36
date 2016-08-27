@@ -38,15 +38,17 @@ public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
         {
             default:
             case 1:
-                Camera.main.transform.position = m_cameraLocCity_01;
+                TabletPanel.Instance.m_defaultCameraPosition = m_cameraLocCity_01;
                 break;
             case 2:
-                Camera.main.transform.position = m_cameraLocCity_02;
+                TabletPanel.Instance.m_defaultCameraPosition = m_cameraLocCity_02;
                 break;
             case 3:
-                Camera.main.transform.position = m_cameraLocCity_03;
+                TabletPanel.Instance.m_defaultCameraPosition = m_cameraLocCity_03;
                 break;
         }
+
+        TabletPanel.Instance.ResetToDefault();
 
         if (m_cityPanel != null) m_cityPanel.gameObject.SetActive(false);
         if (m_tabletPanel != null) m_tabletPanel.gameObject.SetActive(true);
