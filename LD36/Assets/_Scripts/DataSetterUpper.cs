@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class DataSeterUpper : MonoBehaviour
+public class DataSetterUpper : MonoBehaviour
 {
+    public List<Tablet> city001List = new List<Tablet>();
+    public List<Tablet> city002List = new List<Tablet>();
+    public List<Tablet> city003List = new List<Tablet>();
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         Pictograph picto001 = new Pictograph("cow", "picto001.png");
         Pictograph picto002 = new Pictograph("money", "picto002.png");
@@ -35,7 +38,6 @@ public class DataSeterUpper : MonoBehaviour
         Tablet tablet001 = new Tablet(tablet001List);
         Tablet tablet002 = new Tablet(tablet002List);
 
-        List<Tablet> city001List = new List<Tablet>();
         city001List.Add(tablet001);
         city001List.Add(tablet002);
     }
