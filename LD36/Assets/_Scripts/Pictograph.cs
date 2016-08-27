@@ -1,21 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pictograph : MonoBehaviour
+public class Pictograph
 {
-    //do we just have a line here for each sprite???
-    public Sprite picto001picture;
-
-
     public string pictographName;
-    public Sprite pictographPicture;
+    public string pictographFileName;
 
-    public Pictograph(string pictoName, Sprite pictoPic)
+    public Pictograph(string pictoName, string pictoFileName)
     {
         pictographName = pictoName;
-        pictographPicture = pictoPic;
+        pictographFileName = pictoFileName;
     }
-
-    //this line seems to not work?? do i need to change from using sprite as the other field?
-    //public Pictograph picto001 = new Pictograph(Cow, picto001picture);
 }
