@@ -8,11 +8,15 @@ public class Player : SingletonMonoBehaviour<Player>
 
     public bool IsKnown(string pictograph)
     {
+        pictograph = pictograph.Trim().ToLower();
+
         return !string.IsNullOrEmpty(pictograph) && m_knownPictographs.ContainsKey(pictograph) && m_knownPictographs[pictograph];
     }
 
     public void SetIsKnown(string pictograph, bool isKnown)
     {
+        pictograph = pictograph.Trim().ToLower();
+
         if (string.IsNullOrEmpty(pictograph)) return;
 
         m_knownPictographs[pictograph] = isKnown;

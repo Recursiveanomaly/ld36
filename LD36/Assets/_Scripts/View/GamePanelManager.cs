@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
 {
     public GameObject m_cityPanel;
     public GameObject m_tabletPanel;
+
+    public Canvas m_canvas;
+    public EventSystem m_eventSystem;
 
     public Vector3 m_cameraLocCity_01;
     public Vector3 m_cameraLocCity_02;
@@ -12,13 +16,18 @@ public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
 
     Vector3 m_cityPanelCameraLoc;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         m_cityPanelCameraLoc = Camera.main.transform.position;
         if (m_cityPanel != null) m_cityPanel.gameObject.SetActive(true);
         if (m_tabletPanel != null) m_tabletPanel.gameObject.SetActive(false);
     }
 
+    public bool DidUGUICaptureInput()
+    {
+        return GamePanelManager.Instance.m_eventSystem != null && GamePanelManager.Instance.m_eventSystem.currentSelectedGameObject != null;
+    }
 
     public void ShowCityPanel()
     {

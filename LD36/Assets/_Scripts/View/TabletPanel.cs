@@ -54,6 +54,7 @@ public class TabletPanel : SingletonMonoBehaviour<TabletPanel>
 
         m_guessPopup.Setup(pictograph);
         m_guessPopup.gameObject.SetActive(true);
+        m_guessPopup.FocusInputBox();
         m_currentState = eTabletViewState.kInfoPopup;
     }
 }
