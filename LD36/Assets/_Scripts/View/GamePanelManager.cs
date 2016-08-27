@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
 {
@@ -13,6 +14,8 @@ public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
     public Vector3 m_cameraLocCity_01;
     public Vector3 m_cameraLocCity_02;
     public Vector3 m_cameraLocCity_03;
+
+    public List<CityTabletGroup> m_cityTabletGroups = new List<CityTabletGroup>();
 
     Vector3 m_cityPanelCameraLoc;
 
@@ -41,6 +44,8 @@ public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
 
     public void ShowTabletPanel(int city)
     {
+        if (city < 0 || city >= m_cityTabletGroups.Count) return; // out of range
+
         // todo: animate
 
         switch (city)
@@ -58,6 +63,8 @@ public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
         }
 
         TabletPanel.Instance.ResetToDefault();
+
+        m_cityTabletGroups[city].SetFirstTablet();
 
         if (m_cityPanel != null) m_cityPanel.gameObject.SetActive(false);
         if (m_tabletPanel != null) m_tabletPanel.gameObject.SetActive(true);
