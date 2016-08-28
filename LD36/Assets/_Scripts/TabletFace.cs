@@ -8,4 +8,5 @@ public class TabletFace : MonoBehaviour
     public string documentText;
     public string archeologistName;
     public string carbonDate;
+    public string artifactName;
 }

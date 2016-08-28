@@ -25,10 +25,17 @@ public class TabletPanel : SingletonMonoBehaviour<TabletPanel>
     public Vector3 m_defaultCameraPosition;
     Vector3 m_cameraFocus;
 
+    CityTabletGroup m_cityTabletGroup;
+
     protected override void Awake()
     {
         base.Awake();
         ResetToDefault();
+    }
+
+    public void Setup(CityTabletGroup cityTabletGroup)
+    {
+        m_cityTabletGroup = cityTabletGroup;
     }
 
     public void ResetToDefault()
@@ -55,6 +62,18 @@ public class TabletPanel : SingletonMonoBehaviour<TabletPanel>
         m_guessPopup.Setup(pictograph);
         m_guessPopup.gameObject.SetActive(true);
         m_guessPopup.FocusInputBox();
+        m_currentState = eTabletViewState.kInfoPopup;
+    }
+
+    public void ShowInfoPopup()
+    {
+        if (m_currentState != eTabletViewState.kDefault || m_cityTabletGroup == null || m_infoPopup == null) return;
+
+        if (m_guessPopup != null) m_guessPopup.gameObject.SetActive(false);
+        if (m_defaultGUI != null) m_defaultGUI.gameObject.SetActive(false);
+
+        m_infoPopup.gameObject.SetActive(true);
+        m_infoPopup.Setup(m_cityTabletGroup.GetCurrentTabletFace());
         m_currentState = eTabletViewState.kInfoPopup;
     }
 }

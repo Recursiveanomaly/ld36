@@ -51,17 +51,18 @@ public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
         switch (city)
         {
             default:
-            case 1:
+            case 0:
                 TabletPanel.Instance.m_defaultCameraPosition = m_cameraLocCity_01;
                 break;
-            case 2:
+            case 1:
                 TabletPanel.Instance.m_defaultCameraPosition = m_cameraLocCity_02;
                 break;
-            case 3:
+            case 2:
                 TabletPanel.Instance.m_defaultCameraPosition = m_cameraLocCity_03;
                 break;
         }
 
+        TabletPanel.Instance.Setup(m_cityTabletGroups[city]);
         TabletPanel.Instance.ResetToDefault();
 
         m_cityTabletGroups[city].SetFirstTablet();

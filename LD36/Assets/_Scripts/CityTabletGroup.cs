@@ -38,4 +38,12 @@ public class CityTabletGroup : MonoBehaviour
 
         tabletList[m_currentTabletIndex].Unshelf(m_activeTabletPosition, Quaternion.Euler(m_activeTabletRotation));
     }
+
+    public TabletFace GetCurrentTabletFace()
+    {
+        if (tabletList == null || m_currentTabletIndex < 0 || m_currentTabletIndex >= tabletList.Count) return null;
+
+        TabletFace face = tabletList[m_currentTabletIndex].GetComponentInChildren<TabletFace>();
+        return face;
+    }
 }
