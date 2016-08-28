@@ -14,16 +14,18 @@ public class Player : SingletonMonoBehaviour<Player>
         SetIsKnown("with", true);
         SetIsKnown("of", true);
         SetIsKnown("from", true);
+        SetIsKnown("man", true);
+        SetIsKnown("woman", true);
 
         SetIsKnown("no", true);
 
-        SetIsKnown("man", true);
-        SetIsKnown("love", true);
-        SetIsKnown("woman", true);
-        SetIsKnown("make", true);
-        SetIsKnown("name", true);
-        SetIsKnown("child", true);
-        SetIsKnown("kill", true);
+        //SetIsKnown("man", true);
+        //SetIsKnown("love", true);
+        //SetIsKnown("woman", true);
+        //SetIsKnown("make", true);
+        //SetIsKnown("name", true);
+        //SetIsKnown("child", true);
+        //SetIsKnown("kill", true);
     }
 
     public bool IsKnown(string pictograph)
