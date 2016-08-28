@@ -16,10 +16,20 @@ public class InfoPopup : MonoBehaviour
     {
         m_showTime = Time.time;
 
-        m_artifactName.text = tablet.artifactName;
-        m_archaeologist.text = tablet.archeologistName;
-        m_carbonDate.text = tablet.carbonDate;
-        m_description.text = tablet.documentText;
+        if (tablet != null)
+        {
+            m_artifactName.text = tablet.artifactName;
+            m_archaeologist.text = tablet.archeologistName;
+            m_carbonDate.text = tablet.carbonDate;
+            m_description.text = tablet.documentText;
+        }
+        else
+        {
+            m_artifactName.text = "";
+            m_archaeologist.text = "";
+            m_carbonDate.text = "";
+            m_description.text = "";
+        }
     }
 
     void Update()
