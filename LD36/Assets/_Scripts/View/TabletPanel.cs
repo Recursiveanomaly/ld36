@@ -76,4 +76,14 @@ public class TabletPanel : SingletonMonoBehaviour<TabletPanel>
         m_infoPopup.Setup(m_cityTabletGroup.GetCurrentTabletFace());
         m_currentState = eTabletViewState.kInfoPopup;
     }
+
+    public void NextTabletPressed()
+    {
+        if (m_cityTabletGroup != null) m_cityTabletGroup.NextTablet();
+    }
+
+    public void PreviousTabletPressed()
+    {
+        if (m_cityTabletGroup != null) m_cityTabletGroup.PreviousTablet();
+    }
 }
