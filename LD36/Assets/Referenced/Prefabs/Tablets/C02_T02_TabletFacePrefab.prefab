@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 428446}
   m_Layer: 5
-  m_Name: ChildSteamMoney
+  m_Name: ChildStealMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 467242}
   m_Layer: 5
-  m_Name: NoWaterKillChild (1)
+  m_Name: NoWaterKillChild
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1459,7 +1459,10 @@ MonoBehaviour:
   documentText: 'This tablet was found in a Church.
 
 
-    It appears to have been attached to a wall in one of the central rooms.'
+    It appears to have been attached to a wall in one of the central rooms.
+
+
+    Other images nearby show children starving and dying of thirst.'
   archeologistName: 
   carbonDate: 1350 B.C.
   artifactName: B-7865
