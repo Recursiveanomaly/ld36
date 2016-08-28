@@ -14,6 +14,7 @@ public class Player : SingletonMonoBehaviour<Player>
         SetIsKnown("with", true);
         SetIsKnown("of", true);
         SetIsKnown("from", true);
+        SetIsKnown("for", true);
         SetIsKnown("man", true);
         SetIsKnown("woman", true);
 
