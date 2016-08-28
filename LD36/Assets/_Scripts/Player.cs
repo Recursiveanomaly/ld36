@@ -20,6 +20,8 @@ public class Player : SingletonMonoBehaviour<Player>
 
         SetIsKnown("no", true);
 
+        SetIsKnown("in", true);
+
         //SetIsKnown("man", true);
         //SetIsKnown("love", true);
         //SetIsKnown("woman", true);
