@@ -1508,7 +1508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7a1dd488799e342a71c3cb96bd0720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pictographName: money
+  pictographName: gold
   answer: {fileID: 10278408}
 --- !u!114 &11453094
 MonoBehaviour:
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7a1dd488799e342a71c3cb96bd0720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pictographName: horse
+  pictographName: money
   answer: {fileID: 10293288}
 --- !u!114 &11498286
 MonoBehaviour:

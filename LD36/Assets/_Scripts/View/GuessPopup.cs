@@ -41,7 +41,7 @@ public class GuessPopup : MonoBehaviour
         string guess = m_inputField.text;
         guess = guess.Trim();
         guess = guess.ToLower();
-        if (m_currentPictograph.pictographName.Equals(guess))
+        if (m_currentPictograph.pictographName.Equals(Player.SanitizeString(guess)))
         {
             // celebrate!
             Player.Instance.SetIsKnown(m_currentPictograph.pictographName, true);
