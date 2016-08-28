@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
 {
@@ -36,7 +37,8 @@ public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
     {
         // todo: animate
 
-        Camera.main.transform.position = m_cityPanelCameraLoc;
+        //Camera.main.transform.position = m_cityPanelCameraLoc;
+        Camera.main.transform.DOMove(m_cityPanelCameraLoc, 0.5f);
 
         if (m_cityPanel != null) m_cityPanel.gameObject.SetActive(true);
         if (m_tabletPanel != null) m_tabletPanel.gameObject.SetActive(false);

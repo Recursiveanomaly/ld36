@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using DG.Tweening;
 
 public class TabletPanel : SingletonMonoBehaviour<TabletPanel> 
 {
@@ -45,7 +46,9 @@ public class TabletPanel : SingletonMonoBehaviour<TabletPanel>
 
         if (m_defaultGUI != null) m_defaultGUI.gameObject.SetActive(true);
 
-        Camera.main.transform.position = m_defaultCameraPosition;
+        DOTween.defaultEaseType = Ease.InOutQuad;
+        Camera.main.transform.DOMove(m_defaultCameraPosition, 0.5f);
+        //Camera.main.transform.position = m_defaultCameraPosition;
 
         m_currentState = eTabletViewState.kDefault;
     }
