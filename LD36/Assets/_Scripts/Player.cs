@@ -28,20 +28,43 @@ public class Player : SingletonMonoBehaviour<Player>
 
     public bool IsKnown(string pictograph)
     {
-        pictograph = pictograph.Trim().ToLower();
+        pictograph = SanitizeString(pictograph);
 
         return !string.IsNullOrEmpty(pictograph) && m_knownPictographs.ContainsKey(pictograph) && m_knownPictographs[pictograph];
     }
 
     public void SetIsKnown(string pictograph, bool isKnown)
     {
-        pictograph = pictograph.Trim().ToLower();
+        pictograph = SanitizeString(pictograph);
 
         if (string.IsNullOrEmpty(pictograph)) return;
 
         m_knownPictographs[pictograph] = isKnown;
 
         if (KnownPictographsChanged != null) KnownPictographsChanged();
+    }
+
+    string SanitizeString(string pictograph)
+    {
+        pictograph = pictograph.Trim().ToLower();
+        if (pictograph.EndsWith("s"))
+        {
+            pictograph = pictograph.Remove(pictograph.Length - 1, 1);
+        }
+
+        // special case
+        if (pictograph.Equals("god")) pictograph = "gods";
+
+        // special case
+        if (pictograph.Equals("giant")) pictograph = "giants";
+
+        // special case
+        if (pictograph.Equals("men")) pictograph = "man";
+
+        // special case
+        if (pictograph.Equals("women")) pictograph = "woman";
+
+        return pictograph;
     }
 
     public event Action KnownPictographsChanged;
