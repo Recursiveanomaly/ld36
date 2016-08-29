@@ -37,12 +37,13 @@ public class TabletPanel : SingletonMonoBehaviour<TabletPanel>
     public void Setup(CityTabletGroup cityTabletGroup)
     {
         m_cityTabletGroup = cityTabletGroup;
+        m_infoPopup.ResetPeek();
     }
 
     public void ResetToDefault()
     {
         if (m_guessPopup != null) m_guessPopup.gameObject.SetActive(false);
-        if (m_infoPopup != null) m_infoPopup.gameObject.SetActive(false);
+        if (m_infoPopup != null) m_infoPopup.Peek();
 
         if (m_defaultGUI != null) m_defaultGUI.gameObject.SetActive(true);
 
@@ -57,10 +58,11 @@ public class TabletPanel : SingletonMonoBehaviour<TabletPanel>
     {
         if (m_currentState != eTabletViewState.kDefault || pictograph == null || m_guessPopup == null) return;
 
-        if (m_infoPopup != null) m_infoPopup.gameObject.SetActive(false);
+        if (m_infoPopup != null) m_infoPopup.Peek();
         if (m_defaultGUI != null) m_defaultGUI.gameObject.SetActive(false);
 
-        Camera.main.transform.position = pictograph.transform.position + m_guessPictographCameraOffset;
+        //Camera.main.transform.position = pictograph.transform.position + m_guessPictographCameraOffset;
+        Camera.main.transform.DOMove(pictograph.transform.position + m_guessPictographCameraOffset, 0.25f);
 
         m_guessPopup.Setup(pictograph);
         m_guessPopup.gameObject.SetActive(true);
@@ -75,7 +77,7 @@ public class TabletPanel : SingletonMonoBehaviour<TabletPanel>
         if (m_guessPopup != null) m_guessPopup.gameObject.SetActive(false);
         if (m_defaultGUI != null) m_defaultGUI.gameObject.SetActive(false);
 
-        m_infoPopup.gameObject.SetActive(true);
+        m_infoPopup.Show();
         m_infoPopup.Setup(m_cityTabletGroup.GetCurrentTabletFace());
         m_currentState = eTabletViewState.kInfoPopup;
     }

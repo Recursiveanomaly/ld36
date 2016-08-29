@@ -6,7 +6,10 @@ public class CityPanel : MonoBehaviour
 {
     public GameObject m_introPanel;
     public GameObject m_introPanelBlocker;
-    float startingIntroY;
+
+    bool m_startingIntroSet = false;
+    float m_startingIntroY;
+
     bool m_isIntroOpen = true;
 
     void Awake()
@@ -14,11 +17,10 @@ public class CityPanel : MonoBehaviour
         if (m_introPanel != null)
         {
             m_introPanel.gameObject.SetActive(true);
-            startingIntroY = m_introPanel.transform.position.y;
+            m_startingIntroY = m_introPanel.transform.position.y;
             if (m_introPanelBlocker != null) m_introPanelBlocker.gameObject.SetActive(true);
         }
     }
-
 
     void Update()
     {
@@ -29,6 +31,17 @@ public class CityPanel : MonoBehaviour
                 CloseIntro();
             }
         }
+    }
+
+    public void Peek()
+    {
+        if (!m_startingIntroSet)
+        {
+            m_startingIntroSet = true;
+            m_startingIntroY = transform.position.y;
+        }
+        m_introPanel.transform.DOMoveY(m_startingIntroY - 575f, 0f);
+        m_introPanel.transform.DOMoveY(m_startingIntroY - 525f, 0.5f);
     }
 
     public void ToggleIntro()
@@ -47,7 +60,13 @@ public class CityPanel : MonoBehaviour
     {
         if (m_introPanel != null)
         {
-            m_introPanel.transform.DOMoveY(-115f, 0.5f);
+            if (!m_startingIntroSet)
+            {
+                m_startingIntroSet = true;
+                m_startingIntroY = transform.position.y;
+            }
+
+            m_introPanel.transform.DOMoveY(m_startingIntroY - 525f, 0.5f);
             m_isIntroOpen = false;
             if (m_introPanelBlocker != null) m_introPanelBlocker.gameObject.SetActive(false);
             //m_introPanel.gameObject.SetActive(false);
@@ -58,7 +77,13 @@ public class CityPanel : MonoBehaviour
     {
         if (m_introPanel != null)
         {
-            m_introPanel.transform.DOMoveY(startingIntroY, 0.5f);
+            if(!m_startingIntroSet)
+            {
+                m_startingIntroSet = true;
+                m_startingIntroY = transform.position.y;
+            }
+
+            m_introPanel.transform.DOMoveY(m_startingIntroY, 0.5f);
             m_isIntroOpen = true;
             if (m_introPanelBlocker != null) m_introPanelBlocker.gameObject.SetActive(true);
             //m_introPanel.gameObject.SetActive(true);

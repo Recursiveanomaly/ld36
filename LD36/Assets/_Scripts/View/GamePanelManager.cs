@@ -6,8 +6,8 @@ using DG.Tweening;
 
 public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
 {
-    public GameObject m_cityPanel;
-    public GameObject m_tabletPanel;
+    public CityPanel m_cityPanel;
+    public TabletPanel m_tabletPanel;
 
     public Canvas m_canvas;
     public EventSystem m_eventSystem;
@@ -40,8 +40,15 @@ public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
         //Camera.main.transform.position = m_cityPanelCameraLoc;
         Camera.main.transform.DOMove(m_cityPanelCameraLoc, 0.5f);
 
-        if (m_cityPanel != null) m_cityPanel.gameObject.SetActive(true);
-        if (m_tabletPanel != null) m_tabletPanel.gameObject.SetActive(false);
+        if (m_cityPanel != null)
+        {
+            m_cityPanel.gameObject.SetActive(true);
+            m_cityPanel.Peek();
+        }
+        if (m_tabletPanel != null)
+        {
+            m_tabletPanel.gameObject.SetActive(false);
+        }
     }
 
     public void ShowTabletPanel(int city)
@@ -69,7 +76,14 @@ public class GamePanelManager : SingletonMonoBehaviour<GamePanelManager>
 
         m_cityTabletGroups[city].SetFirstTablet();
 
-        if (m_cityPanel != null) m_cityPanel.gameObject.SetActive(false);
-        if (m_tabletPanel != null) m_tabletPanel.gameObject.SetActive(true);
+        if (m_cityPanel != null)
+        {
+            m_cityPanel.gameObject.SetActive(false);
+        }
+        if (m_tabletPanel != null)
+        {
+            m_tabletPanel.gameObject.SetActive(true);
+            m_tabletPanel.m_infoPopup.Peek();
+        }
     }
 }

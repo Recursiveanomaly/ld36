@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class InfoPopup : MonoBehaviour
 {
@@ -11,6 +12,54 @@ public class InfoPopup : MonoBehaviour
 
     float m_showTime;
     float m_waitAfterShow = 0.2f;
+
+    public GameObject m_nonTweenGUI;
+    public GameObject m_tweenGUI;
+
+    void Awake()
+    {
+        //m_tweenGUI.transform.position = new Vector3(m_startingX + 600, m_tweenGUI.transform.position.y, m_tweenGUI.transform.position.z);
+    }
+
+    bool m_isHidden = true;
+    bool m_startingXSet = false;
+    float m_startingX;
+
+
+    public void ResetPeek()
+    {
+        if (!m_startingXSet)
+        {
+            m_startingX = m_tweenGUI.transform.position.x;
+            m_startingXSet = true;
+        }
+        gameObject.SetActive(false);
+        m_tweenGUI.transform.DOMoveX(m_startingX, 0f);
+    }
+
+    public void Peek(float time = 0.5f)
+    {
+        if (!m_startingXSet)
+        {
+            m_startingX = m_tweenGUI.transform.position.x;
+            m_startingXSet = true;
+        }
+        gameObject.SetActive(false);
+        m_isHidden = true;
+        m_tweenGUI.transform.DOMoveX(m_startingX - 65, time);
+    }
+
+    public void Show()
+    {
+        if (!m_startingXSet)
+        {
+            m_startingX = m_tweenGUI.transform.position.x;
+            m_startingXSet = true;
+        }
+        gameObject.SetActive(true);
+        m_isHidden = false;
+        m_tweenGUI.transform.DOMoveX(m_startingX - 665, 0.5f);
+    }
 
     public void Setup(TabletFace tablet)
     {
